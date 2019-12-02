@@ -71,6 +71,7 @@ So, assuming they're always listening and transmit at glorious 28.8kbps modem st
 
     2160mAh / 32mA = 67 hours
     900mAh / 32mA = 28 hours
+    240mAh / 32mA = 7.5 hours
 
 Woah. I mean, these are conservative numbers too. Not three bad.
 So yeah, sleep both chips if possible when closed and poss use an Arduino (5mA).
