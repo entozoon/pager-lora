@@ -136,3 +136,7 @@ So if my lipo spits out a mad 4.6V, A0 would receive 2.3V.
 | 3.5    | Dead   |      1.75 |         543 | 0% off |
 
     A0 (theory) = Dividered V / 3.3 * 1024
+
+## Power off
+
+It really should power itself off, LoRa et al, with low batt for safety. Might not be worth it though, I mean, do my charge protection circuits handle that? Probs eh?
