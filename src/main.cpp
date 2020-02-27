@@ -12,7 +12,7 @@
 //   delay(200);                      // wait for a second
 // }
 
-// // SEND
+// // // SEND
 // #include <SPI.h>
 // #include <LoRa.h>
 // int counter = 0;
@@ -20,13 +20,11 @@
 // {
 //   delay(4000); // for uploading to device
 //   Serial.begin(115200);
-//   while (!Serial)
-//     ;
 //   Serial.println("\nLoRa Sender");
 //   //          (nss, reset, dio0);
 //   //          (D8, d3, d1);
 //   LoRa.setPins(15, 0, 5);
-//   if (!LoRa.begin(869E6)) // 863-870 in UK, followed by E6 ? right? for hz, I dunno.
+//   LoRa.if (!LoRa.begin(869E6)) // 863-870 in UK, followed by E6 ? right? for hz, I dunno.
 //   {
 //     Serial.println("Starting LoRa failed!");
 //     while (1)
@@ -46,41 +44,52 @@
 //   delay(5000);
 // }
 
-// RECEIVE
-#include <SPI.h>
-#include <LoRa.h>
+// // RECEIVE
+// #include <SPI.h>
+// #include <LoRa.h>
+// void setup()
+// {
+//   delay(4000); // for uploading to device
+//   Serial.begin(115200);
+//   Serial.println("\nLoRa Receiver");
+//   //          (nss, reset, dio0);
+//   //          (D8, d3, d1);
+//   LoRa.setPins(15, 0, 5);
+//   if (!LoRa.begin(869E6)) // 863-870 in UK, followed by E6 ? right? for hz, I dunno.
+//   {
+//     Serial.println("Starting LoRa failed!");
+//     while (1)
+//       ;
+//   }
+// }
+// void loop()
+// {
+//   // try to parse packet
+//   int packetSize = LoRa.parsePacket();
+//   if (packetSize)
+//   {
+//     // received a packet
+//     Serial.print("Received packet '");
+//     // read packet
+//     while (LoRa.available())
+//     {
+//       Serial.print((char)LoRa.read());
+//     }
+//     // print RSSI of packet
+//     Serial.print("' with RSSI ");
+//     Serial.println(LoRa.packetRssi());
+//   }
+// }
+
+// BLINK
 void setup()
 {
-  delay(4000); // for uploading to device
   Serial.begin(115200);
-  while (!Serial)
-    ;
-  Serial.println("\nLoRa Receiver");
-  //          (nss, reset, dio0);
-  //          (D8, d3, d1);
-  LoRa.setPins(15, 0, 5);
-  if (!LoRa.begin(869E6)) // 863-870 in UK, followed by E6 ? right? for hz, I dunno.
-  {
-    Serial.println("Starting LoRa failed!");
-    while (1)
-      ;
-  }
+  delay(4000);
 }
 void loop()
 {
-  // try to parse packet
-  int packetSize = LoRa.parsePacket();
-  if (packetSize)
-  {
-    // received a packet
-    Serial.print("Received packet '");
-    // read packet
-    while (LoRa.available())
-    {
-      Serial.print((char)LoRa.read());
-    }
-    // print RSSI of packet
-    Serial.print("' with RSSI ");
-    Serial.println(LoRa.packetRssi());
-  }
+  int val = analogRead(A0);
+  Serial.println(val);
+  delay(100);
 }
