@@ -114,7 +114,7 @@ People say it has a range of 3.3V, but I should test that.
       [10k]
         |
         |----(100pF -> 1nF)---> analogue input
-        |    reduce wobble
+        |    reduce wobble? Didn't work..
         |
       [10k]
         |
@@ -124,6 +124,7 @@ People say it has a range of 3.3V, but I should test that.
                  = 1 / 2
 
 So if my lipo spits out a mad 4.6V, A0 would receive 2.3V.
+Update: 1024 max value is 6.1V, in reality, through my divider.
 
 | Lipo V | Desc   | Dividered | A0 (theory) | Human  |
 | ------ | ------ | --------: | ----------: | ------ |
@@ -136,6 +137,18 @@ So if my lipo spits out a mad 4.6V, A0 would receive 2.3V.
 | 3.5    | Dead   |      1.75 |         543 | 0% off |
 
     A0 (theory) = Dividered V / 3.3 * 1024
+
+Empirical realities are close but a little different:
+
+| Lipo V | Desc   | A0 (theory) | Human  |
+| ------ | ------ | ----------: | ------ |
+| 4.6    | Pumped |         762 | 100%   |
+| 4.2    | Full   |         706 | 100%   |
+| 4      | Good   |         660 | 75%    |
+| 3.86   | Mid    |         634 | 50%    |
+| 3.75   | Low    |         615 | 20% !  |
+| 3.7    | Low    |         608 | 10% !  |
+| 3.5    | Dead   |         577 | 0% off |
 
 ## Power off
 
