@@ -508,59 +508,6 @@ DIO4
 </package3d>
 </packages3d>
 </library>
-<library name="diy-modules">
-<description>&lt;b&gt;DIY Modules for Arduino, Raspberry Pi, CubieBoard etc.&lt;/b&gt;
-&lt;br&gt;&lt;br&gt;
-The library contains a list of symbols and footprints for popular, cheap and easy-to-use electronic modules.&lt;br&gt;
-The modules are intend to work with microprocessor-based platforms such as &lt;a href="http://arduino.cc"&gt;Arduino&lt;/a&gt;, &lt;a href="http://raspberrypi.org/"&gt;Raspberry Pi&lt;/a&gt;, &lt;a href="http://cubieboard.org/"&gt;CubieBoard&lt;/a&gt;, &lt;a href="http://beagleboard.org/"&gt;BeagleBone&lt;/a&gt; and many others. There are many manufacturers of the modules in the world. Almost all of them can be bought on &lt;a href="ebay.com"&gt;ebay.com&lt;/a&gt;.&lt;br&gt;
-&lt;br&gt;
-By using this library, you can design a PCB for devices created with usage of modules. Even if you do not need to create PCB design, you can also use the library to quickly document your work by drawing schematics of devices built by you.&lt;br&gt;
-&lt;br&gt;
-The latest version, examples, photos and much more can be found at: &lt;b&gt;&lt;a href="http://diymodules.org/eagle"&gt;diymodules.org/eagle&lt;/a&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;
-Comments, suggestions and bug reports please send to: &lt;b&gt;&lt;a href="mailto:eagle@diymodules.org"&gt;eagle@diymodules.org&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;br&gt;
-&lt;i&gt;Version: 1.8.0 (2017-Jul-02)&lt;/i&gt;&lt;br&gt;
-&lt;i&gt;Created by: Miroslaw Brudnowski&lt;/i&gt;&lt;br&gt;&lt;br&gt;
-&lt;i&gt;Released under the Creative Commons Attribution 4.0 International License: &lt;a href="http://creativecommons.org/licenses/by/4.0"&gt;http://creativecommons.org/licenses/by/4.0&lt;/a&gt;&lt;/i&gt;
-&lt;br&gt;&lt;br&gt;
-&lt;center&gt;
-&lt;a href="http://diymodules.org/eagle"&gt;&lt;img src="http://www.diymodules.org/img/diymodules-lbr-image.php?v=1.8.0" alt="DIYmodules.org"&gt;&lt;/a&gt;
-&lt;/center&gt;</description>
-<packages>
-<package name="BATTERY-CHARGER-LI-PROT">
-<description>&lt;b&gt;Protected Lithium Battery 5V Charger&lt;/b&gt; with micro-USB connector</description>
-<wire x1="-13.97" y1="8.636" x2="13.97" y2="8.636" width="0.127" layer="21"/>
-<wire x1="13.97" y1="-8.636" x2="-13.97" y2="-8.636" width="0.127" layer="21"/>
-<pad name="IN+" x="-12.065" y="6.985" drill="1.2" diameter="2.5" shape="square"/>
-<pad name="IN-" x="-12.065" y="-6.985" drill="1.2" diameter="2.5" shape="square"/>
-<pad name="B+" x="10.795" y="3.81" drill="1.2" diameter="2.5" shape="square"/>
-<pad name="B-" x="10.795" y="-3.81" drill="1.2" diameter="2.5" shape="square"/>
-<text x="-9.525" y="6.985" size="1.27" layer="21" align="center-left">IN+</text>
-<text x="-9.525" y="-6.985" size="1.27" layer="21" align="center-left">IN-</text>
-<text x="8.255" y="3.81" size="1.27" layer="21" align="center-right">B+</text>
-<text x="8.255" y="-3.81" size="1.27" layer="21" align="center-right">B-</text>
-<wire x1="-13.97" y1="8.636" x2="-13.97" y2="4.064" width="0.127" layer="21"/>
-<wire x1="-13.97" y1="-8.636" x2="-13.97" y2="-4.064" width="0.127" layer="21"/>
-<wire x1="-14.605" y1="4.064" x2="-13.97" y2="4.064" width="0.127" layer="21"/>
-<wire x1="-14.605" y1="-4.064" x2="-13.97" y2="-4.064" width="0.127" layer="21"/>
-<wire x1="-13.97" y1="-4.064" x2="-8.128" y2="-4.064" width="0.127" layer="21"/>
-<wire x1="-14.605" y1="4.064" x2="-14.605" y2="-4.064" width="0.127" layer="21"/>
-<wire x1="-8.128" y1="4.064" x2="-8.128" y2="-4.064" width="0.127" layer="21"/>
-<text x="-11.43" y="0" size="1.778" layer="21" align="center">USB</text>
-<text x="0" y="10.16" size="1.27" layer="25" align="bottom-center">&gt;NAME</text>
-<text x="0" y="-10.16" size="1.27" layer="27" align="top-center">&gt;VALUE</text>
-<wire x1="13.97" y1="8.636" x2="13.97" y2="6.35" width="0.127" layer="21"/>
-<wire x1="13.97" y1="6.35" x2="12.7" y2="6.35" width="0.127" layer="21"/>
-<wire x1="12.7" y1="6.35" x2="12.7" y2="-6.35" width="0.127" layer="21"/>
-<wire x1="12.7" y1="-6.35" x2="13.97" y2="-6.35" width="0.127" layer="21"/>
-<wire x1="13.97" y1="-6.35" x2="13.97" y2="-8.636" width="0.127" layer="21"/>
-<pad name="OUT+" x="10.795" y="6.985" drill="1.2" diameter="2.5" shape="square"/>
-<pad name="OUT-" x="10.795" y="-6.985" drill="1.2" diameter="2.5" shape="square"/>
-<wire x1="-13.97" y1="4.064" x2="-8.128" y2="4.064" width="0.127" layer="21"/>
-<text x="8.255" y="6.985" size="1.27" layer="21" align="center-right">OUT+</text>
-<text x="8.255" y="-6.985" size="1.27" layer="21" align="center-right">OUT-</text>
-</package>
-</packages>
-</library>
 </libraries>
 <attributes>
 </attributes>
@@ -807,10 +754,6 @@ design rules under a new name.</description>
 <attribute name="POPULARITY" value="72" x="-35.56" y="6.35" size="1.778" layer="27" display="off"/>
 <attribute name="VALUE" x="-38.608" y="1.27" size="1.27" layer="27" ratio="10"/>
 </element>
-<element name="U$3" library="diy-modules" package="BATTERY-CHARGER-LI-PROT" value="BATTERY-CHARGER-LI-PROT" x="-25.4" y="-12.7" smashed="yes">
-<attribute name="NAME" x="-25.4" y="-2.54" size="1.27" layer="25" align="bottom-center"/>
-<attribute name="VALUE" x="-25.4" y="-22.86" size="1.27" layer="27" align="top-center"/>
-</element>
 </elements>
 <signals>
 <signal name="N$2">
@@ -877,6 +820,19 @@ design rules under a new name.</description>
 <contactref element="DIS1" pad="2"/>
 <wire x1="46.99" y1="24.13" x2="52.76" y2="48.57" width="0" layer="19" extent="1-1"/>
 </signal>
+<signal name="N$15">
+<contactref element="DIS1" pad="8"/>
+<contactref element="U$1" pad="GND"/>
+<contactref element="S1" pad="3"/>
+<contactref element="S2" pad="3"/>
+<contactref element="S3" pad="3"/>
+<contactref element="S4" pad="3"/>
+<wire x1="62.23" y1="8.89" x2="37.52" y2="48.57" width="0" layer="19" extent="1-1"/>
+<wire x1="-8.3312" y1="4.0894" x2="37.52" y2="48.57" width="0" layer="19" extent="1-1"/>
+<wire x1="-18.4912" y1="4.0894" x2="-8.3312" y2="4.0894" width="0" layer="19" extent="1-1"/>
+<wire x1="-28.6512" y1="4.0894" x2="-18.4912" y2="4.0894" width="0" layer="19" extent="1-1"/>
+<wire x1="-38.8112" y1="4.0894" x2="-28.6512" y2="4.0894" width="0" layer="19" extent="1-1"/>
+</signal>
 <signal name="N$13">
 <contactref element="DIS1" pad="1"/>
 <contactref element="U$1" pad="D7"/>
@@ -924,21 +880,6 @@ design rules under a new name.</description>
 <contactref element="S1" pad="2"/>
 <wire x1="-1.8288" y1="8.6106" x2="44.45" y2="8.89" width="0" layer="19" extent="1-1"/>
 <wire x1="-8.3312" y1="8.6106" x2="-1.8288" y2="8.6106" width="0" layer="19" extent="1-1"/>
-</signal>
-<signal name="N$22">
-<contactref element="U$3" pad="OUT-"/>
-<contactref element="DIS1" pad="8"/>
-<contactref element="U$1" pad="GND"/>
-<contactref element="S1" pad="3"/>
-<contactref element="S2" pad="3"/>
-<contactref element="S3" pad="3"/>
-<contactref element="S4" pad="3"/>
-<wire x1="62.23" y1="8.89" x2="37.52" y2="48.57" width="0" layer="19" extent="1-1"/>
-<wire x1="-8.3312" y1="4.0894" x2="37.52" y2="48.57" width="0" layer="19" extent="1-1"/>
-<wire x1="-18.4912" y1="4.0894" x2="-8.3312" y2="4.0894" width="0" layer="19" extent="1-1"/>
-<wire x1="-28.6512" y1="4.0894" x2="-18.4912" y2="4.0894" width="0" layer="19" extent="1-1"/>
-<wire x1="-38.8112" y1="4.0894" x2="-28.6512" y2="4.0894" width="0" layer="19" extent="1-1"/>
-<wire x1="-14.605" y1="-19.685" x2="-18.4912" y2="4.0894" width="0" layer="19" extent="1-1"/>
 </signal>
 </signals>
 <mfgpreviewcolors>
