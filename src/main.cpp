@@ -169,7 +169,7 @@
 // pin 4 - LCD chip select (CS)
 // pin 3 - LCD reset (RST)
 //                                         (clk, din, dc, ce, rst)
-Adafruit_PCD8544 display = Adafruit_PCD8544(6, 5, 4, 3, 2);
+Adafruit_PCD8544 display = Adafruit_PCD8544(7, 6, 5, 4, 2);
 // Hardware SPI (faster, but must use certain hardware pins):
 // SCK is LCD serial clock (SCLK) - this is pin 13 on Arduino Uno
 // MOSI is LCD DIN - this is pin 11 on an Arduino Uno
