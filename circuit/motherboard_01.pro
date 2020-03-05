@@ -2,24 +2,24 @@ EAGLE AutoRouter Statistics:
 
 Job           : C:/www/pager-lora/circuit/motherboard.brd
 
-Start at      : 00:57:59 (04/03/2020)
-End at        : 00:58:04 (04/03/2020)
-Elapsed time  : 00:00:01
+Start at      : 00:48:02 (05/03/2020)
+End at        : 00:48:06 (05/03/2020)
+Elapsed time  : 00:00:02
 
-Signals       :    24   RoutingGrid: 25 mil  Layers: 2
-Connections   :    38   predefined:  6 ( 0 Vias )
+Signals       :    36   RoutingGrid: 25 mil  Layers: 2
+Connections   :    54   predefined:  19 ( 0 Vias )
 
-Router memory :   59400
+Router memory :   179568
 
 Passname          :    Busses     Route Optimize1 Optimize2 Optimize3 Optimize4
 
-Time per pass     :  00:00:00  00:00:01  00:00:00  00:00:00  00:00:00  00:00:00
+Time per pass     :  00:00:00  00:00:01  00:00:00  00:00:00  00:00:00  00:00:01
 Number of Ripups  :         0         0         0         0         0         0
 max. Level        :         0         1         0         0         0         0
 max. Total        :         0         0         0         0         0         0
 
-Routed            :         4        30        30        30        30        30
-Vias              :         0        30         3         1         1         1
-Resolution        :    26.3 %    94.7 %    94.7 %    94.7 %    94.7 %    94.7 %
+Routed            :         3        12        12        12        12        12
+Vias              :         0         8         2         5         5         5
+Resolution        :    40.7 %    57.4 %    57.4 %    57.4 %    57.4 %    57.4 %
 
 Final             : 
