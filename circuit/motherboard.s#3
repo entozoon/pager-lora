@@ -13,7 +13,7 @@
 <layer number="17" name="Pads" color="2" fill="1" visible="no" active="no"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="no" active="no"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="no"/>
-<layer number="20" name="Dimension" color="15" fill="1" visible="no" active="no"/>
+<layer number="20" name="Dimension" color="24" fill="1" visible="no" active="no"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="no" active="no"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="no" active="no"/>
 <layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="no"/>
@@ -6226,6 +6226,7 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <part name="U$5" library="5v-step-up-minimal" deviceset="DC-DC-STEP-UP-5V" device=""/>
 <part name="J1" library="con-omron" library_urn="urn:adsk.eagle:library:167" deviceset="XF2*-22?" device="35-1" package3d_urn="urn:adsk.eagle:package:9075/1" technology="L"/>
 <part name="J2" library="con-omron" library_urn="urn:adsk.eagle:library:167" deviceset="XF2*-22?" device="35-1" package3d_urn="urn:adsk.eagle:package:9075/1" technology="L"/>
+<part name="GND3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -6364,6 +6365,9 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <instance part="J2" gate="-20" x="17.78" y="139.7" smashed="yes" rot="R270"/>
 <instance part="J2" gate="-21" x="15.24" y="139.7" smashed="yes" rot="R270"/>
 <instance part="J2" gate="-22" x="12.7" y="139.7" smashed="yes" rot="R270"/>
+<instance part="GND3" gate="1" x="73.66" y="185.42" smashed="yes">
+<attribute name="VALUE" x="71.12" y="182.88" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -6430,40 +6434,6 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <junction x="121.92" y="33.02"/>
 </segment>
 </net>
-<net name="N$18" class="0">
-<segment>
-<pinref part="S4" gate="1" pin="S"/>
-<pinref part="S4" gate="1" pin="S1"/>
-<wire x1="20.32" y1="185.42" x2="17.78" y2="185.42" width="0.1524" layer="91"/>
-<pinref part="S3" gate="1" pin="S"/>
-<pinref part="S3" gate="1" pin="S1"/>
-<wire x1="27.94" y1="185.42" x2="25.4" y2="185.42" width="0.1524" layer="91"/>
-<wire x1="17.78" y1="185.42" x2="25.4" y2="185.42" width="0.1524" layer="91"/>
-<junction x="17.78" y="185.42"/>
-<junction x="25.4" y="185.42"/>
-<pinref part="S2" gate="1" pin="S"/>
-<pinref part="S2" gate="1" pin="S1"/>
-<wire x1="35.56" y1="185.42" x2="33.02" y2="185.42" width="0.1524" layer="91"/>
-<wire x1="25.4" y1="185.42" x2="33.02" y2="185.42" width="0.1524" layer="91"/>
-<junction x="33.02" y="185.42"/>
-<pinref part="S1" gate="1" pin="S"/>
-<pinref part="S1" gate="1" pin="S1"/>
-<wire x1="43.18" y1="185.42" x2="40.64" y2="185.42" width="0.1524" layer="91"/>
-<wire x1="33.02" y1="185.42" x2="40.64" y2="185.42" width="0.1524" layer="91"/>
-<junction x="40.64" y="185.42"/>
-<wire x1="40.64" y1="185.42" x2="40.64" y2="205.74" width="0.1524" layer="91"/>
-<wire x1="40.64" y1="205.74" x2="66.04" y2="205.74" width="0.1524" layer="91"/>
-<pinref part="DIS2" gate="1" pin="GND"/>
-<pinref part="J2" gate="-1" pin="MSV"/>
-<wire x1="66.04" y1="185.42" x2="66.04" y2="170.18" width="0.1524" layer="91"/>
-<wire x1="66.04" y1="170.18" x2="66.04" y2="142.24" width="0.1524" layer="91"/>
-<wire x1="66.04" y1="205.74" x2="66.04" y2="185.42" width="0.1524" layer="91"/>
-<junction x="66.04" y="185.42"/>
-<pinref part="T1" gate="G$1" pin="E"/>
-<wire x1="91.44" y1="170.18" x2="66.04" y2="170.18" width="0.1524" layer="91"/>
-<junction x="66.04" y="170.18"/>
-</segment>
-</net>
 <net name="N$24" class="0">
 <segment>
 <wire x1="27.94" y1="15.24" x2="27.94" y2="45.72" width="0.1524" layer="91"/>
@@ -6516,16 +6486,56 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <pinref part="R5" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<pinref part="GND8" gate="1" pin="GND"/>
-<pinref part="U$5" gate="G$1" pin="IN-"/>
-<junction x="-25.4" y="10.16"/>
-<pinref part="U$5" gate="G$1" pin="IN-"/>
-</segment>
-<segment>
 <pinref part="GND9" gate="1" pin="GND"/>
 <wire x1="10.16" y1="17.78" x2="12.7" y2="17.78" width="0.1524" layer="91"/>
 <pinref part="U$5" gate="G$1" pin="GND"/>
 <junction x="10.16" y="17.78"/>
+</segment>
+<segment>
+<pinref part="S4" gate="1" pin="S"/>
+<pinref part="S4" gate="1" pin="S1"/>
+<wire x1="20.32" y1="185.42" x2="17.78" y2="185.42" width="0.1524" layer="91"/>
+<pinref part="S3" gate="1" pin="S"/>
+<pinref part="S3" gate="1" pin="S1"/>
+<wire x1="27.94" y1="185.42" x2="25.4" y2="185.42" width="0.1524" layer="91"/>
+<wire x1="17.78" y1="185.42" x2="25.4" y2="185.42" width="0.1524" layer="91"/>
+<junction x="17.78" y="185.42"/>
+<junction x="25.4" y="185.42"/>
+<pinref part="S2" gate="1" pin="S"/>
+<pinref part="S2" gate="1" pin="S1"/>
+<wire x1="35.56" y1="185.42" x2="33.02" y2="185.42" width="0.1524" layer="91"/>
+<wire x1="25.4" y1="185.42" x2="33.02" y2="185.42" width="0.1524" layer="91"/>
+<junction x="33.02" y="185.42"/>
+<pinref part="S1" gate="1" pin="S"/>
+<pinref part="S1" gate="1" pin="S1"/>
+<wire x1="43.18" y1="185.42" x2="40.64" y2="185.42" width="0.1524" layer="91"/>
+<wire x1="33.02" y1="185.42" x2="40.64" y2="185.42" width="0.1524" layer="91"/>
+<junction x="40.64" y="185.42"/>
+<wire x1="40.64" y1="185.42" x2="40.64" y2="205.74" width="0.1524" layer="91"/>
+<wire x1="40.64" y1="205.74" x2="66.04" y2="205.74" width="0.1524" layer="91"/>
+<pinref part="DIS2" gate="1" pin="GND"/>
+<pinref part="J2" gate="-1" pin="MSV"/>
+<wire x1="66.04" y1="185.42" x2="66.04" y2="170.18" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="170.18" x2="66.04" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="205.74" x2="66.04" y2="185.42" width="0.1524" layer="91"/>
+<junction x="66.04" y="185.42"/>
+<pinref part="T1" gate="G$1" pin="E"/>
+<wire x1="91.44" y1="170.18" x2="66.04" y2="170.18" width="0.1524" layer="91"/>
+<junction x="66.04" y="170.18"/>
+<pinref part="GND3" gate="1" pin="GND"/>
+<wire x1="66.04" y1="185.42" x2="66.04" y2="187.96" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="187.96" x2="73.66" y2="187.96" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U$3" gate="G$1" pin="OUT-"/>
+<pinref part="GND1" gate="1" pin="GND"/>
+<wire x1="-30.48" y1="5.08" x2="-27.94" y2="5.08" width="0.1524" layer="91"/>
+<wire x1="-27.94" y1="5.08" x2="-27.94" y2="10.16" width="0.1524" layer="91"/>
+<junction x="-30.48" y="5.08"/>
+<pinref part="GND8" gate="1" pin="GND"/>
+<pinref part="U$5" gate="G$1" pin="IN-"/>
+<junction x="-25.4" y="10.16"/>
+<wire x1="-27.94" y1="10.16" x2="-25.4" y2="10.16" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$9" class="0">
@@ -6595,42 +6605,12 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <pinref part="R6" gate="G$1" pin="2"/>
 </segment>
 </net>
-<net name="N$1" class="0">
-<segment>
-<pinref part="U$3" gate="G$1" pin="OUT-"/>
-<pinref part="GND1" gate="1" pin="GND"/>
-</segment>
-</net>
-<net name="N$15" class="0">
-<segment>
-<pinref part="U$3" gate="G$1" pin="OUT+"/>
-<wire x1="-30.48" y1="20.32" x2="-30.48" y2="27.94" width="0.1524" layer="91"/>
-<pinref part="JP1" gate="G$1" pin="1"/>
-<wire x1="-30.48" y1="27.94" x2="-27.94" y2="27.94" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$16" class="0">
-<segment>
-<pinref part="JP1" gate="G$1" pin="2"/>
-<wire x1="-27.94" y1="25.4" x2="-25.4" y2="25.4" width="0.1524" layer="91"/>
-<wire x1="-25.4" y1="25.4" x2="-25.4" y2="17.78" width="0.1524" layer="91"/>
-<pinref part="R4" gate="G$1" pin="1"/>
-<wire x1="-27.94" y1="25.4" x2="17.78" y2="25.4" width="0.1524" layer="91"/>
-<wire x1="17.78" y1="25.4" x2="17.78" y2="15.24" width="0.1524" layer="91"/>
-<junction x="-27.94" y="25.4"/>
-<pinref part="U$5" gate="G$1" pin="IN+"/>
-<junction x="-25.4" y="17.78"/>
-</segment>
-</net>
 <net name="N$23" class="0">
 <segment>
-<pinref part="J2" gate="-2" pin="MS"/>
 <pinref part="DIS2" gate="1" pin="BL"/>
-<wire x1="63.5" y1="142.24" x2="63.5" y2="180.34" width="0.1524" layer="91"/>
 <pinref part="T1" gate="G$1" pin="C"/>
 <wire x1="63.5" y1="180.34" x2="63.5" y2="185.42" width="0.1524" layer="91"/>
 <wire x1="91.44" y1="180.34" x2="63.5" y2="180.34" width="0.1524" layer="91"/>
-<junction x="63.5" y="180.34"/>
 </segment>
 </net>
 <net name="N$25" class="0">
@@ -6758,6 +6738,26 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <pinref part="U$1" gate="G$1" pin="A3"/>
 <wire x1="20.32" y1="93.98" x2="20.32" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="20.32" y1="55.88" x2="38.1" y2="55.88" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$15" class="0">
+<segment>
+<pinref part="U$3" gate="G$1" pin="OUT+"/>
+<pinref part="JP1" gate="G$1" pin="2"/>
+<wire x1="-30.48" y1="20.32" x2="-30.48" y2="25.4" width="0.1524" layer="91"/>
+<wire x1="-30.48" y1="25.4" x2="-27.94" y2="25.4" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$18" class="0">
+<segment>
+<pinref part="JP1" gate="G$1" pin="1"/>
+<pinref part="U$5" gate="G$1" pin="IN+"/>
+<wire x1="-27.94" y1="27.94" x2="-25.4" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="-25.4" y1="27.94" x2="-25.4" y2="17.78" width="0.1524" layer="91"/>
+<pinref part="R4" gate="G$1" pin="1"/>
+<wire x1="17.78" y1="27.94" x2="17.78" y2="15.24" width="0.1524" layer="91"/>
+<wire x1="-27.94" y1="27.94" x2="17.78" y2="27.94" width="0.1524" layer="91"/>
+<junction x="-27.94" y="27.94"/>
 </segment>
 </net>
 </nets>
