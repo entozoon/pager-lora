@@ -6608,13 +6608,10 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 </net>
 <net name="N$23" class="0">
 <segment>
-<pinref part="J2" gate="-2" pin="MS"/>
 <pinref part="DIS2" gate="1" pin="BL"/>
-<wire x1="63.5" y1="142.24" x2="63.5" y2="180.34" width="0.1524" layer="91"/>
 <pinref part="T1" gate="G$1" pin="C"/>
 <wire x1="63.5" y1="180.34" x2="63.5" y2="185.42" width="0.1524" layer="91"/>
 <wire x1="91.44" y1="180.34" x2="63.5" y2="180.34" width="0.1524" layer="91"/>
-<junction x="63.5" y="180.34"/>
 </segment>
 </net>
 <net name="N$25" class="0">

@@ -6748,16 +6748,22 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <wire x1="-30.48" y1="25.4" x2="-27.94" y2="25.4" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$18" class="0">
+<net name="N$1" class="0">
 <segment>
-<pinref part="JP1" gate="G$1" pin="1"/>
 <pinref part="U$5" gate="G$1" pin="IN+"/>
-<wire x1="-27.94" y1="27.94" x2="-25.4" y2="27.94" width="0.1524" layer="91"/>
 <wire x1="-25.4" y1="27.94" x2="-25.4" y2="17.78" width="0.1524" layer="91"/>
+<pinref part="JP1" gate="G$1" pin="1"/>
+<wire x1="-27.94" y1="27.94" x2="-25.4" y2="27.94" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$16" class="0">
+<segment>
 <pinref part="R4" gate="G$1" pin="1"/>
-<wire x1="17.78" y1="27.94" x2="17.78" y2="15.24" width="0.1524" layer="91"/>
-<wire x1="-27.94" y1="27.94" x2="17.78" y2="27.94" width="0.1524" layer="91"/>
-<junction x="-27.94" y="27.94"/>
+<wire x1="17.78" y1="15.24" x2="17.78" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="17.78" y1="27.94" x2="-7.62" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="-7.62" y1="27.94" x2="-7.62" y2="15.24" width="0.1524" layer="91"/>
+<pinref part="U$3" gate="G$1" pin="B+"/>
+<wire x1="-7.62" y1="15.24" x2="-30.48" y2="15.24" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

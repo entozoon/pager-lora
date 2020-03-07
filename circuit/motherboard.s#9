@@ -6606,27 +6606,6 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <pinref part="GND1" gate="1" pin="GND"/>
 </segment>
 </net>
-<net name="N$15" class="0">
-<segment>
-<pinref part="U$3" gate="G$1" pin="OUT+"/>
-<wire x1="-30.48" y1="20.32" x2="-30.48" y2="27.94" width="0.1524" layer="91"/>
-<pinref part="JP1" gate="G$1" pin="1"/>
-<wire x1="-30.48" y1="27.94" x2="-27.94" y2="27.94" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$16" class="0">
-<segment>
-<pinref part="JP1" gate="G$1" pin="2"/>
-<wire x1="-27.94" y1="25.4" x2="-25.4" y2="25.4" width="0.1524" layer="91"/>
-<wire x1="-25.4" y1="25.4" x2="-25.4" y2="17.78" width="0.1524" layer="91"/>
-<pinref part="R4" gate="G$1" pin="1"/>
-<wire x1="-27.94" y1="25.4" x2="17.78" y2="25.4" width="0.1524" layer="91"/>
-<wire x1="17.78" y1="25.4" x2="17.78" y2="15.24" width="0.1524" layer="91"/>
-<junction x="-27.94" y="25.4"/>
-<pinref part="U$5" gate="G$1" pin="IN+"/>
-<junction x="-25.4" y="17.78"/>
-</segment>
-</net>
 <net name="N$23" class="0">
 <segment>
 <pinref part="J2" gate="-2" pin="MS"/>
@@ -6763,6 +6742,26 @@ Source : http://www.omron.com/ecb/products/pdf/fpc.pdf</description>
 <pinref part="U$1" gate="G$1" pin="A3"/>
 <wire x1="20.32" y1="93.98" x2="20.32" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="20.32" y1="55.88" x2="38.1" y2="55.88" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$15" class="0">
+<segment>
+<pinref part="U$3" gate="G$1" pin="OUT+"/>
+<pinref part="JP1" gate="G$1" pin="2"/>
+<wire x1="-30.48" y1="20.32" x2="-30.48" y2="25.4" width="0.1524" layer="91"/>
+<wire x1="-30.48" y1="25.4" x2="-27.94" y2="25.4" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$18" class="0">
+<segment>
+<pinref part="JP1" gate="G$1" pin="1"/>
+<pinref part="U$5" gate="G$1" pin="IN+"/>
+<wire x1="-27.94" y1="27.94" x2="-25.4" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="-25.4" y1="27.94" x2="-25.4" y2="17.78" width="0.1524" layer="91"/>
+<pinref part="R4" gate="G$1" pin="1"/>
+<wire x1="17.78" y1="27.94" x2="17.78" y2="15.24" width="0.1524" layer="91"/>
+<wire x1="-27.94" y1="27.94" x2="17.78" y2="27.94" width="0.1524" layer="91"/>
+<junction x="-27.94" y="27.94"/>
 </segment>
 </net>
 </nets>
