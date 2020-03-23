@@ -1,0 +1,4 @@
+# Eagle backups
+**/*.b#*
+**/*.s#*
+**/*.job
