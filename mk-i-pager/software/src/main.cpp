@@ -223,10 +223,8 @@ void loop()
 //   // analogWrite(9, x);
 //   // delay(20);
 //   // x++;
-
 //   if (x > 4 * pi)
 //     x = 0;
-
 //   int y = floor(255 * ((sin(x / 2 - pi / 2)) / 2 + .5));
 //   // Serial.print(y);
 //   // Serial.print(' ');
