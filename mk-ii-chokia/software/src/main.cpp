@@ -4,6 +4,21 @@
 #include <Wire.h>
 
 // //
+// // BLINK
+// //
+// void setup()
+// {
+//   pinMode(LED_BUILTIN, OUTPUT);
+// }
+// void loop()
+// {
+//   digitalWrite(LED_BUILTIN, HIGH); // turn the LED on (HIGH is the voltage level)
+//   delay(200);                      // wait for a second
+//   digitalWrite(LED_BUILTIN, LOW);  // turn the LED off by making the voltage LOW
+//   delay(200);                      // wait for a second
+// }
+
+// //
 // // LCD Test
 // //
 // U8G2_ST7920_128X64_1_SW_SPI u8g2(
@@ -17,6 +32,7 @@
 // // and - to GND, PSB, BLK
 // void setup(void)
 // {
+// delay(5000); // ALWAYS delay or it can't be reprogrammed easily. Press reset during build
 //   u8g2.begin();
 // }
 // void loop(void)
@@ -38,16 +54,14 @@
 //   } while (u8g2.nextPage());
 // }
 
+// //
 // // Backlight dimming test
-// // Not quite sure about this.. I heard a 39ohm resistor to gpio could control it. dimming on would be ace
-// // but - don't stress too much, if it's just on all the tiem that'd be okay too
-// // https://www.algissalys.com/electronics/nokia-5110-lcd-backlight-to-ground-using-gpio
+// //
 // void setup()
 // {
 //   Serial.begin(115200);
-//   delay(5000);
-//   // I think D1, D2, are 1, 2.. A0, A1 are A0, A1..
-//   pinMode(9, OUTPUT);
+//   delay(10000); // ALWAYS delay or it can't be reprogrammed easily. Press reset during build
+//   pinMode(PA0, OUTPUT);
 // }
 // float x = 0;
 // float pi = 3.141592;
@@ -65,7 +79,135 @@
 //   int y = floor(255 * ((sin(x / 2 - pi / 2)) / 2 + .5));
 //   // Serial.print(y);
 //   // Serial.print(' ');
-//   analogWrite(9, y);
+//   analogWrite(PA0, y);
 //   x += 0.01;
 //   delay(5);
 // }
+
+// //
+// // RECEIVE
+// //
+// #include <SPI.h>
+// #include <LoRa.h>
+// void setup()
+// {
+//   Serial.begin(115200);
+//   delay(10000); // for uploading to device
+//   Serial.println("\nLoRa Receiver");
+//   //          (nss, reset, dio0); (dio0 unused)
+//   // LoRa.setPins(10, 9);
+//   LoRa.setPins(PB0, PB1, PA4);
+//   if (!LoRa.begin(433E6)) // 433 is legal in the UK and capable by device. 863-870 otherwise. worried it'll clash though
+//   {
+//     Serial.println("Starting LoRa failed!");
+//     while (1)
+//       ;
+//   }
+// }
+// void loop()
+// {
+//   // try to parse packet
+//   int packetSize = LoRa.parsePacket();
+//   if (packetSize)
+//   {
+//     // received a packet
+//     Serial.print("Received packet '");
+//     // read packet
+//     while (LoRa.available())
+//     {
+//       Serial.print((char)LoRa.read());
+//     }
+//     // print RSSI of packet
+//     Serial.print("' with RSSI "); // Received Signal Strength Indicator (0 is theoretical full strength)
+//     Serial.println(LoRa.packetRssi());
+//   }
+// }
+
+// //
+// // SEND
+// //
+// #include <SPI.h>
+// #include <LoRa.h>
+// int counter = 0;
+// void setup()
+// {
+//   delay(10000); // for uploading to device
+//   Serial.begin(115200);
+//   Serial.println("\nLoRa Sender");
+//   //          (nss, reset, dio0); (dio0 unused)
+//   LoRa.setPins(PB0, PB1, PA4);
+//   if (!LoRa.begin(433E6)) // 433 is legal in the UK and capable by device. 863-870 otherwise. worried it'll clash though
+//   {
+//     Serial.println("Starting LoRa failed!");
+//     while (1)
+//       ;
+//   }
+// }
+// void loop()
+// {
+//   Serial.print("Sending packet: ");
+//   Serial.println(counter);
+//   // send packet
+//   LoRa.beginPacket();
+//   LoRa.print("hello ");
+//   LoRa.print(counter);
+//   LoRa.endPacket();
+//   counter++;
+//   delay(1000);
+// }
+
+//
+// SENDY RECEIVY
+//
+#include <SPI.h>
+#include <LoRa.h>
+long counter = 0;
+long ticker = 0;
+long tickerSnapshot = 0;
+void setup()
+{
+  delay(15000); // for uploading to device
+  Serial.begin(115200);
+  Serial.println("\nLoRa Receiver");
+  //          (nss, reset, dio0); (dio0 unused)
+  // LoRa.setPins(PB0, PB1); //, PA4);
+  LoRa.setPins(PB6, PB5); //, PA4);
+  if (!LoRa.begin(433E6)) // 433 is legal in the UK and capable by device. 863-870 otherwise. worried it'll clash though
+  {
+    Serial.println("Starting LoRa failed!");
+    while (1)
+      ;
+  }
+}
+void loop()
+{
+  // try to parse packet
+  int packetSize = LoRa.parsePacket();
+  if (packetSize)
+  {
+    // received a packet
+    Serial.print("Received packet '");
+    // read packet
+    while (LoRa.available())
+    {
+      Serial.print((char)LoRa.read());
+    }
+    // print RSSI of packet
+    Serial.print("' with RSSI "); // Received Signal Strength Indicator (0 is theoretical full strength)
+    Serial.println(LoRa.packetRssi());
+  }
+
+  if (ticker > 5000)
+  {
+    tickerSnapshot = millis();
+    Serial.print("Sending packet: ");
+    Serial.println(counter);
+    // send packet
+    LoRa.beginPacket();
+    LoRa.print("Hey from chokia ");
+    LoRa.print(counter);
+    LoRa.endPacket();
+    counter++;
+  }
+  ticker = millis() - tickerSnapshot;
+}

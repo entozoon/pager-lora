@@ -10261,19 +10261,19 @@ Source: www.vishay.com .. rwm.pdf</description>
 <instance part="GND10" gate="1" x="114.3" y="93.98" smashed="yes">
 <attribute name="VALUE" x="111.76" y="91.44" size="1.778" layer="96"/>
 </instance>
-<instance part="GND11" gate="1" x="114.3" y="40.64" smashed="yes">
-<attribute name="VALUE" x="111.76" y="38.1" size="1.778" layer="96"/>
+<instance part="GND11" gate="1" x="104.14" y="25.4" smashed="yes">
+<attribute name="VALUE" x="101.6" y="22.86" size="1.778" layer="96"/>
 </instance>
 <instance part="P+3" gate="1" x="109.22" y="93.98" smashed="yes">
 <attribute name="VALUE" x="106.68" y="88.9" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="T2" gate="G$1" x="104.14" y="43.18" smashed="yes">
-<attribute name="NAME" x="101.6" y="50.8" size="1.778" layer="95"/>
-<attribute name="VALUE" x="101.6" y="48.26" size="1.778" layer="96"/>
+<instance part="T2" gate="G$1" x="101.6" y="35.56" smashed="yes">
+<attribute name="NAME" x="99.06" y="43.18" size="1.778" layer="95"/>
+<attribute name="VALUE" x="99.06" y="40.64" size="1.778" layer="96"/>
 </instance>
-<instance part="R1" gate="G$1" x="96.52" y="43.18" smashed="yes">
-<attribute name="NAME" x="92.71" y="44.6786" size="1.778" layer="95"/>
-<attribute name="VALUE" x="92.71" y="39.878" size="1.778" layer="96"/>
+<instance part="R1" gate="G$1" x="91.44" y="35.56" smashed="yes">
+<attribute name="NAME" x="87.63" y="37.0586" size="1.778" layer="95"/>
+<attribute name="VALUE" x="87.63" y="32.258" size="1.778" layer="96"/>
 </instance>
 <instance part="P+4" gate="1" x="106.68" y="50.8" smashed="yes">
 <attribute name="VALUE" x="104.14" y="45.72" size="1.778" layer="96" rot="R90"/>
@@ -10399,10 +10399,9 @@ Source: www.vishay.com .. rwm.pdf</description>
 <wire x1="119.38" y1="96.52" x2="119.38" y2="93.98" width="0.1524" layer="91"/>
 </segment>
 <segment>
+<pinref part="T2" gate="G$1" pin="E"/>
 <pinref part="GND11" gate="1" pin="GND"/>
-<pinref part="U$1" gate="G$1" pin="K_LED_0V"/>
-<wire x1="114.3" y1="43.18" x2="119.38" y2="43.18" width="0.1524" layer="91"/>
-<wire x1="119.38" y1="43.18" x2="119.38" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="104.14" y1="30.48" x2="104.14" y2="27.94" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="+5V" class="0">
@@ -10422,6 +10421,11 @@ Source: www.vishay.com .. rwm.pdf</description>
 <pinref part="P+3" gate="1" pin="+5V"/>
 <pinref part="U$1" gate="G$1" pin="VDD_+5V"/>
 <wire x1="109.22" y1="91.44" x2="119.38" y2="91.44" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="A_LED_+5V"/>
+<wire x1="106.68" y1="48.26" x2="119.38" y2="48.26" width="0.1524" layer="91"/>
+<pinref part="P+4" gate="1" pin="+5V"/>
 </segment>
 </net>
 <net name="N$16" class="0">
@@ -10499,29 +10503,35 @@ Source: www.vishay.com .. rwm.pdf</description>
 <segment>
 <pinref part="T2" gate="G$1" pin="B"/>
 <pinref part="R1" gate="G$1" pin="2"/>
-</segment>
-</net>
-<net name="N$15" class="0">
-<segment>
-<pinref part="T2" gate="G$1" pin="C"/>
-<pinref part="P+4" gate="1" pin="+5V"/>
+<wire x1="96.52" y1="35.56" x2="99.06" y2="35.56" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$18" class="0">
 <segment>
-<pinref part="U$2" gate="G$1" pin="PC15"/>
-<wire x1="83.82" y1="53.34" x2="91.44" y2="53.34" width="0.1524" layer="91"/>
+<pinref part="U$2" gate="G$1" pin="PA0"/>
+<wire x1="83.82" y1="55.88" x2="86.36" y2="55.88" width="0.1524" layer="91"/>
 <pinref part="R1" gate="G$1" pin="1"/>
-<wire x1="91.44" y1="53.34" x2="91.44" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="86.36" y1="35.56" x2="86.36" y2="55.88" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$31" class="0">
+<net name="N$14" class="0">
 <segment>
-<pinref part="T2" gate="G$1" pin="E"/>
-<wire x1="106.68" y1="38.1" x2="109.22" y2="38.1" width="0.1524" layer="91"/>
-<wire x1="109.22" y1="38.1" x2="109.22" y2="48.26" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="A_LED_+5V"/>
-<wire x1="109.22" y1="48.26" x2="119.38" y2="48.26" width="0.1524" layer="91"/>
+<pinref part="U$1" gate="G$1" pin="K_LED_0V"/>
+<pinref part="T2" gate="G$1" pin="C"/>
+<wire x1="119.38" y1="45.72" x2="104.14" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="104.14" y1="45.72" x2="104.14" y2="40.64" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$15" class="0">
+<segment>
+<pinref part="U$2" gate="G$1" pin="PA9"/>
+<wire x1="43.18" y1="81.28" x2="40.64" y2="81.28" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$17" class="0">
+<segment>
+<pinref part="U$2" gate="G$1" pin="PA10"/>
+<wire x1="43.18" y1="78.74" x2="40.64" y2="78.74" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

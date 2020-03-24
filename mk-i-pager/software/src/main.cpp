@@ -10,10 +10,12 @@
 #include <Fonts/TomThumb.h>
 #include <nokia-myke.h>
 
+// //
 // // BLINK
+// //
 // void setup()
 // {
-// pinMode(LED_BUILTIN, OUTPUT);
+//   pinMode(LED_BUILTIN, OUTPUT);
 // }
 // void loop()
 // {
@@ -23,7 +25,9 @@
 //   delay(200);                      // wait for a second
 // }
 
+// //
 // // SEND
+// //
 // #include <SPI.h>
 // #include <LoRa.h>
 // int counter = 0;
@@ -32,10 +36,10 @@
 //   delay(4000); // for uploading to device
 //   Serial.begin(115200);
 //   Serial.println("\nLoRa Sender");
-// //          (nss, reset, dio0); (dio0 unused)
-// //          (D8, D0);
-// LoRa.setPins(15, 16);
-//   if (!LoRa.begin(433E6))  // 433 is legal in the UK and capable by device. 863-870 otherwise. worried it'll clash though
+//          (nss, reset, dio0); (dio0 unused)
+//          (D10, D8, D9);
+// LoRa.setPins(10, 9);
+//   if (!LoRa.begin(433E6)) // 433 is legal in the UK and capable by device. 863-870 otherwise. worried it'll clash though
 //   {
 //     Serial.println("Starting LoRa failed!");
 //     while (1)
@@ -55,7 +59,9 @@
 //   delay(1000);
 // }
 
+// //
 // // RECEIVE
+// //
 // #include <SPI.h>
 // #include <LoRa.h>
 // void setup()
@@ -64,9 +70,7 @@
 //   Serial.begin(115200);
 //   Serial.println("\nLoRa Receiver");
 //   //          (nss, reset, dio0); (dio0 unused)
-//   //          (D8, D0);
-//   // LoRa.setPins(15, 16);
-//   //          (D8, D0);
+//   //          (D10, D8, D9);
 //   LoRa.setPins(10, 9);
 //   if (!LoRa.begin(433E6)) // 433 is legal in the UK and capable by device. 863-870 otherwise. worried it'll clash though
 //   {
@@ -107,99 +111,103 @@
 //   delay(100);
 // }
 
-// // SENDY RECEIVY NANO
-// #include <SPI.h>
-// #include <LoRa.h>
-// long counter = 0;
-// long ticker = 0;
-// long tickerSnapshot = 0;
-// void setup()
-// {
-//   delay(4000); // for uploading to device
-//   Serial.begin(115200);
-//   Serial.println("\nLoRa Receiver");
-//   //          (nss, reset, dio0); (dio0 unused)
-//   // LoRa.setPins(15, 16); // Wemos (D8, D0)
-//   LoRa.setPins(10, 9);    //  Nano (D8, D0) // IM NOT CONVINCED THESE ARE RIGHT (even though it works). Think it might be a 1:1 relationship with gpio
-//   if (!LoRa.begin(433E6)) // 433 is legal in the UK and capable by device. 863-870 otherwise. worried it'll clash though
-//   {
-//     Serial.println("Starting LoRa failed!");
-//     while (1)
-//       ;
-//   }
-// }
-// void loop()
-// {
-//   // try to parse packet
-//   int packetSize = LoRa.parsePacket();
-//   if (packetSize)
-//   {
-//     // received a packet
-//     Serial.print("Received packet '");
-//     // read packet
-//     while (LoRa.available())
-//     {
-//       Serial.print((char)LoRa.read());
-//     }
-//     // print RSSI of packet
-//     Serial.print("' with RSSI "); // Received Signal Strength Indicator (0 is theoretical full strength)
-//     Serial.println(LoRa.packetRssi());
-//   }
-
-//   if (ticker > 5000)
-//   {
-//     tickerSnapshot = millis();
-//     Serial.print("Sending packet: ");
-//     Serial.println(counter);
-//     // send packet
-//     LoRa.beginPacket();
-//     LoRa.print("hello ");
-//     LoRa.print(counter);
-//     LoRa.endPacket();
-//     counter++;
-//   }
-//   ticker = millis() - tickerSnapshot;
-// }
-
-// LCD Test
-// Software SPI (slower updates, more flexible pin options):
-// pin 7 - Serial clock out (SCLK)
-// pin 6 - Serial data out (DIN)
-// pin 5 - Data/Command select (D/C)
-// pin 4 - LCD chip select (CS)
-// pin 3 - LCD reset (RST)
-//                                         (clk, din, dc, ce, rst)
-Adafruit_PCD8544 display = Adafruit_PCD8544(7, 6, 5, 4, 2);
-// Hardware SPI (faster, but must use certain hardware pins):
-// SCK is LCD serial clock (SCLK) - this is pin 13 on Arduino Uno
-// MOSI is LCD DIN - this is pin 11 on an Arduino Uno
-// pin 5 - Data/Command select (D/C)
-// pin 4 - LCD chip select (CS)
-// pin 3 - LCD reset (RST)
-// Adafruit_PCD8544 display = Adafruit_PCD8544(5, 4, 3);
-// Note with hardware SPI MISO and SS pins aren't used but will still be read
-// and written to during SPI transfer.  Be careful sharing these pins!
+//
+// SENDY RECEIVY
+//
+#include <SPI.h>
+#include <LoRa.h>
+long counter = 0;
+long ticker = 0;
+long tickerSnapshot = 0;
 void setup()
 {
-  delay(5000);
-  display.begin();
-  display.setContrast(60);
-  display.setRotation(2);
-  display.setFont(&__nokiafc224pt7b);
-  display.setTextColor(BLACK);
-  display.setTextSize(1);
+  delay(15000); // for uploading to device
+  Serial.begin(115200);
+  Serial.println("\nLoRa Receiver");
+  //          (nss, reset, dio0); (dio0 unused)
+  //          (D10, D8, D9);
+  LoRa.setPins(10, 9);
+  if (!LoRa.begin(433E6)) // 433 is legal in the UK and capable by device. 863-870 otherwise. worried it'll clash though
+  {
+    Serial.println("Starting LoRa failed!");
+    while (1)
+      ;
+  }
 }
 void loop()
 {
-  display.clearDisplay();
-  display.setCursor(0, 10);
-  display.println("3");
-  display.println("messages");
-  display.println("received");
-  display.display();
+  // try to parse packet
+  int packetSize = LoRa.parsePacket();
+  if (packetSize)
+  {
+    // received a packet
+    Serial.print("Received: '");
+    // read packet
+    while (LoRa.available())
+    {
+      Serial.print((char)LoRa.read());
+    }
+    // print RSSI of packet
+    Serial.print("' with RSSI "); // Received Signal Strength Indicator (0 is theoretical full strength)
+    Serial.println(LoRa.packetRssi());
+    delay(10);
+  }
 
-  delay(20000);
+  if (ticker > 5000)
+  {
+    tickerSnapshot = millis();
+    Serial.print("Sending: ");
+    Serial.println(counter);
+    // send packet
+    LoRa.beginPacket();
+    LoRa.print("Hey from pager ");
+    LoRa.print(counter);
+    LoRa.endPacket();
+    counter++;
+    delay(10);
+  }
+  ticker = millis() - tickerSnapshot;
 }
+
+// // LCD Test
+// // Software SPI (slower updates, more flexible pin options):
+// // pin 7 - Serial clock out (SCLK)
+// // pin 6 - Serial data out (DIN)
+// // pin 5 - Data/Command select (D/C)
+// // pin 4 - LCD chip select (CS)
+// // pin 3 - LCD reset (RST)
+// //                                         (clk, din, dc, ce, rst)
+// Adafruit_PCD8544 display = Adafruit_PCD8544(7, 6, 5, 4, 2);
+// // Hardware SPI (faster, but must use certain hardware pins):
+// // SCK is LCD serial clock (SCLK) - this is pin 13 on Arduino Uno
+// // MOSI is LCD DIN - this is pin 11 on an Arduino Uno
+// // pin 5 - Data/Command select (D/C)
+// // pin 4 - LCD chip select (CS)
+// // pin 3 - LCD reset (RST)
+// // Adafruit_PCD8544 display = Adafruit_PCD8544(5, 4, 3);
+// // Note with hardware SPI MISO and SS pins aren't used but will still be read
+// // and written to during SPI transfer.  Be careful sharing these pins!
+// void setup()
+// {
+//   delay(5000);
+//   display.begin();
+//   display.setContrast(60);
+//   display.setRotation(2);
+//   display.setFont(&__nokiafc224pt7b);
+//   display.setTextColor(BLACK);
+//   display.setTextSize(1);
+// }
+// void loop()
+// {
+//   display.clearDisplay();
+//   display.setCursor(0, 10);
+//   display.println("3");
+//   display.println("messages");
+//   display.println("received");
+//   display.display();
+
+//   delay(20000);
+// }
 
 // // Backlight dimming test
 // // Not quite sure about this.. I heard a 39ohm resistor to gpio could control it. dimming on would be ace
