@@ -170,8 +170,8 @@ void setup()
   Serial.begin(115200);
   Serial.println("\nLoRa Receiver");
   //          (nss, reset, dio0); (dio0 unused)
-  // LoRa.setPins(PB0, PB1); //, PA4);
-  LoRa.setPins(PB6, PB5); //, PA4);
+  // LoRa.setPins(PB0, PB1); //, PA4); // only sending..
+  LoRa.setPins(PB6, PB5); //, PA4);  // only sending..
   if (!LoRa.begin(433E6)) // 433 is legal in the UK and capable by device. 863-870 otherwise. worried it'll clash though
   {
     Serial.println("Starting LoRa failed!");
@@ -186,7 +186,7 @@ void loop()
   if (packetSize)
   {
     // received a packet
-    Serial.print("Received packet '");
+    Serial.print("Received: '");
     // read packet
     while (LoRa.available())
     {
@@ -195,12 +195,13 @@ void loop()
     // print RSSI of packet
     Serial.print("' with RSSI "); // Received Signal Strength Indicator (0 is theoretical full strength)
     Serial.println(LoRa.packetRssi());
+    delay(10);
   }
 
   if (ticker > 5000)
   {
     tickerSnapshot = millis();
-    Serial.print("Sending packet: ");
+    Serial.print("Sending: ");
     Serial.println(counter);
     // send packet
     LoRa.beginPacket();
@@ -208,6 +209,7 @@ void loop()
     LoRa.print(counter);
     LoRa.endPacket();
     counter++;
+    delay(10);
   }
   ticker = millis() - tickerSnapshot;
 }
