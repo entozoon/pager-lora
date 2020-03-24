@@ -36,8 +36,8 @@
 //   delay(4000); // for uploading to device
 //   Serial.begin(9600);
 //   Serial.println("\nLoRa Sender");
-//          (nss, reset, dio0); (dio0 unused)
-//          (D10, D8, D9);
+// //         (nss, reset, dio0); (dio0 unused)
+// //         (D10, D8, D9);
 // LoRa.setPins(10, 9);
 //   if (!LoRa.begin(433E6)) // 433 is legal in the UK and capable by device. 863-870 otherwise. worried it'll clash though
 //   {
