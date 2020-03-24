@@ -38,7 +38,7 @@
 //   Serial.println("\nLoRa Sender");
 // //         (nss, reset, dio0); (dio0 unused)
 // //         (D10, D8, D9);
-// LoRa.setPins(10, 9);
+// LoRa.setPins(10, 8);
 //   if (!LoRa.begin(433E6)) // 433 is legal in the UK and capable by device. 863-870 otherwise. worried it'll clash though
 //   {
 //     Serial.println("Starting LoRa failed!");
@@ -71,7 +71,7 @@
 //   Serial.println("\nLoRa Receiver");
 //   //          (nss, reset, dio0); (dio0 unused)
 //   //          (D10, D8, D9);
-//   LoRa.setPins(10, 9);
+//   LoRa.setPins(10, 8);
 //   if (!LoRa.begin(433E6)) // 433 is legal in the UK and capable by device. 863-870 otherwise. worried it'll clash though
 //   {
 //     Serial.println("Starting LoRa failed!");
@@ -93,6 +93,7 @@
 //       Serial.print((char)LoRa.read());
 //     }
 //     // print RSSI of packet
+
 //     Serial.print("' with RSSI "); // Received Signal Strength Indicator (0 is theoretical full strength)
 //     Serial.println(LoRa.packetRssi());
 //   }
@@ -126,7 +127,7 @@ void setup()
   Serial.println("\nLoRa Receiver");
   //          (nss, reset, dio0); (dio0 unused)
   //          (D10, D8, D9);
-  LoRa.setPins(10, 9);
+  LoRa.setPins(10, 8);
   if (!LoRa.begin(433E6)) // 433 is legal in the UK and capable by device. 863-870 otherwise. worried it'll clash though
   {
     Serial.println("Starting LoRa failed!");
