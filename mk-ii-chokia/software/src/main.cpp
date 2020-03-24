@@ -96,7 +96,7 @@
 //   Serial.println("\nLoRa Receiver");
 //   //          (nss, reset, dio0); (dio0 unused)
 //   // LoRa.setPins(10, 9);
-//   LoRa.setPins(PB6, PB5); //, PA4);  // only sending..
+//   LoRa.setPins(PB0, PB11); //, PB10);  // only sending..
 //   if (!LoRa.begin(433E6)) // 433 is legal in the UK and capable by device. 863-870 otherwise. worried it'll clash though
 //   {
 //     Serial.println("Starting LoRa failed!");
@@ -135,7 +135,7 @@
 //   Serial.begin(9600);
 //   Serial.println("\nLoRa Sender");
 //   //          (nss, reset, dio0); (dio0 unused)
-//   LoRa.setPins(PB6, PB5); //, PA4);  // only sending..
+//   LoRa.setPins(PB0, PB11); //, PB10);  // only sending..
 //   if (!LoRa.begin(433E6)) // 433 is legal in the UK and capable by device. 863-870 otherwise. worried it'll clash though
 //   {
 //     Serial.println("Starting LoRa failed!");
@@ -156,60 +156,149 @@
 //   delay(1000);
 // }
 
+// //
+// // SENDY RECEIVY
+// //
+// #include <SPI.h>
+// #include <LoRa.h>
+// long counter = 0;
+// long ticker = 0;
+// long tickerSnapshot = 0;
+// void setup()
+// {
+//   delay(15000); // for uploading to device
+//   Serial.begin(9600);
+//   Serial.println("\nLoRa Receiver");
+//   //          (nss, reset, dio0); (dio0 unused)
+//   // LoRa.setPins(PB0, PB1); //, PA4); // only sending..
+//   LoRa.setPins(PB0, PB11); //, PB10);  // only sending..
+//   if (!LoRa.begin(433E6))  // 433 is legal in the UK and capable by device. 863-870 otherwise. worried it'll clash though
+//   {
+//     Serial.println("Starting LoRa failed!");
+//     while (1)
+//       ;
+//   }
+// }
+// void loop()
+// {
+//   // try to parse packet
+//   int packetSize = LoRa.parsePacket();
+//   if (packetSize)
+//   {
+//     // received a packet
+//     Serial.print("Received: '");
+//     // read packet
+//     while (LoRa.available())
+//     {
+//       Serial.print((char)LoRa.read());
+//     }
+//     // print RSSI of packet
+//     Serial.print("' with RSSI "); // Received Signal Strength Indicator (0 is theoretical full strength)
+//     Serial.println(LoRa.packetRssi());
+//     // delay(10);
+//   }
+
+//   if (ticker > 5000)
+//   {
+//     tickerSnapshot = millis();
+//     Serial.print("Sending: ");
+//     Serial.println(counter);
+//     // send packet
+//     LoRa.beginPacket();
+//     LoRa.print("Hey from chokia ");
+//     LoRa.print(counter);
+//     LoRa.endPacket();
+//     counter++;
+//     // delay(10);
+//   }
+//   ticker = millis() - tickerSnapshot;
+// }
+
 //
-// SENDY RECEIVY
+// Button test
 //
-#include <SPI.h>
-#include <LoRa.h>
-long counter = 0;
-long ticker = 0;
-long tickerSnapshot = 0;
 void setup()
 {
-  delay(15000); // for uploading to device
+  delay(10000);
   Serial.begin(9600);
-  Serial.println("\nLoRa Receiver");
-  //          (nss, reset, dio0); (dio0 unused)
-  // LoRa.setPins(PB0, PB1); //, PA4); // only sending..
-  LoRa.setPins(PB6, PB5); //, PA4);  // only sending..
-  if (!LoRa.begin(433E6)) // 433 is legal in the UK and capable by device. 863-870 otherwise. worried it'll clash though
-  {
-    Serial.println("Starting LoRa failed!");
-    while (1)
-      ;
-  }
+  pinMode(PB9, INPUT_PULLUP);
+  pinMode(PB8, INPUT_PULLUP);
+  pinMode(PB7, INPUT_PULLUP);
+  pinMode(PB6, INPUT_PULLUP);
+  pinMode(PB5, INPUT_PULLUP);
+  pinMode(PB4, INPUT_PULLUP);
+  pinMode(PB3, INPUT_PULLUP);
+  pinMode(PA15, INPUT_PULLUP);
+  // PA11
+  // PA12 explode it (USB)
+  pinMode(PA10, INPUT_PULLUP);
+  pinMode(PA9, INPUT_PULLUP);
+  pinMode(PA8, INPUT_PULLUP);
+  pinMode(PB15, INPUT_PULLUP);
+  pinMode(PB14, INPUT_PULLUP);
+  pinMode(PB13, INPUT_PULLUP);
+  pinMode(PB12, INPUT_PULLUP);
 }
 void loop()
 {
-  // try to parse packet
-  int packetSize = LoRa.parsePacket();
-  if (packetSize)
+  if (digitalRead(PB9) == 0)
   {
-    // received a packet
-    Serial.print("Received: '");
-    // read packet
-    while (LoRa.available())
-    {
-      Serial.print((char)LoRa.read());
-    }
-    // print RSSI of packet
-    Serial.print("' with RSSI "); // Received Signal Strength Indicator (0 is theoretical full strength)
-    Serial.println(LoRa.packetRssi());
-    // delay(10);
+    Serial.println("PB9");
   }
-
-  if (ticker > 5000)
+  if (digitalRead(PB8) == 0)
   {
-    tickerSnapshot = millis();
-    Serial.print("Sending: ");
-    Serial.println(counter);
-    // send packet
-    LoRa.beginPacket();
-    LoRa.print("Hey from chokia ");
-    LoRa.print(counter);
-    LoRa.endPacket();
-    counter++;
-    // delay(10);
+    Serial.println("PB8");
   }
-  ticker = millis() - tickerSnapshot;
+  if (digitalRead(PB7) == 0)
+  {
+    Serial.println("PB7");
+  }
+  if (digitalRead(PB6) == 0)
+  {
+    Serial.println("PB6");
+  }
+  if (digitalRead(PB5) == 0)
+  {
+    Serial.println("PB5");
+  }
+  if (digitalRead(PB4) == 0)
+  {
+    Serial.println("PB4");
+  }
+  if (digitalRead(PB3) == 0)
+  {
+    Serial.println("PB3");
+  }
+  if (digitalRead(PA15) == 0)
+  {
+    Serial.println("PA15");
+  }
+  if (digitalRead(PA10) == 0)
+  {
+    Serial.println("PA10");
+  }
+  if (digitalRead(PA9) == 0)
+  {
+    Serial.println("PA9");
+  }
+  if (digitalRead(PA8) == 0)
+  {
+    Serial.println("PA8");
+  }
+  if (digitalRead(PB15) == 0)
+  {
+    Serial.println("PB15");
+  }
+  if (digitalRead(PB14) == 0)
+  {
+    Serial.println("PB14");
+  }
+  if (digitalRead(PB13) == 0)
+  {
+    Serial.println("PB13");
+  }
+  if (digitalRead(PB12) == 0)
+  {
+    Serial.println("PB12");
+  }
 }
