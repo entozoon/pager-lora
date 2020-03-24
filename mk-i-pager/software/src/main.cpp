@@ -150,7 +150,7 @@ void loop()
     // print RSSI of packet
     Serial.print("' with RSSI "); // Received Signal Strength Indicator (0 is theoretical full strength)
     Serial.println(LoRa.packetRssi());
-    delay(10);
+    // delay(10);
   }
 
   if (ticker > 10000)
@@ -165,7 +165,7 @@ void loop()
     // dies here! *****
     LoRa.endPacket();
     counter++;
-    delay(10);
+    delay(1000);
   }
   ticker = millis() - tickerSnapshot;
 }
