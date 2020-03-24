@@ -34,7 +34,7 @@
 // void setup()
 // {
 //   delay(4000); // for uploading to device
-//   Serial.begin(115200);
+//   Serial.begin(9600);
 //   Serial.println("\nLoRa Sender");
 //          (nss, reset, dio0); (dio0 unused)
 //          (D10, D8, D9);
@@ -67,7 +67,7 @@
 // void setup()
 // {
 //   delay(4000); // for uploading to device
-//   Serial.begin(115200);
+//   Serial.begin(9600);
 //   Serial.println("\nLoRa Receiver");
 //   //          (nss, reset, dio0); (dio0 unused)
 //   //          (D10, D8, D9);
@@ -101,7 +101,7 @@
 // // TEST VOLTMETER READ
 // void setup()
 // {
-//   Serial.begin(115200);
+//   Serial.begin(9600);
 //   delay(4000);
 // }
 // void loop()
@@ -122,7 +122,7 @@ long tickerSnapshot = 0;
 void setup()
 {
   delay(15000); // for uploading to device
-  Serial.begin(115200);
+  Serial.begin(9600);
   Serial.println("\nLoRa Receiver");
   //          (nss, reset, dio0); (dio0 unused)
   //          (D10, D8, D9);
@@ -215,7 +215,7 @@ void loop()
 // // https://www.algissalys.com/electronics/nokia-5110-lcd-backlight-to-ground-using-gpio
 // void setup()
 // {
-//   Serial.begin(115200);
+//   Serial.begin(9600);
 //   delay(5000);
 //   // I think D1, D2, are 1, 2.. A0, A1 are A0, A1..
 //   pinMode(9, OUTPUT);

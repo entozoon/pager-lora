@@ -59,7 +59,7 @@
 // //
 // void setup()
 // {
-//   Serial.begin(115200);
+//   Serial.begin(9600);
 //   delay(10000); // ALWAYS delay or it can't be reprogrammed easily. Press reset during build
 //   pinMode(PA0, OUTPUT);
 // }
@@ -91,7 +91,7 @@
 // #include <LoRa.h>
 // void setup()
 // {
-//   Serial.begin(115200);
+//   Serial.begin(9600);
 //   delay(10000); // for uploading to device
 //   Serial.println("\nLoRa Receiver");
 //   //          (nss, reset, dio0); (dio0 unused)
@@ -132,7 +132,7 @@
 // void setup()
 // {
 //   delay(10000); // for uploading to device
-//   Serial.begin(115200);
+//   Serial.begin(9600);
 //   Serial.println("\nLoRa Sender");
 //   //          (nss, reset, dio0); (dio0 unused)
 //   LoRa.setPins(PB0, PB1, PA4);
@@ -167,7 +167,7 @@ long tickerSnapshot = 0;
 void setup()
 {
   delay(15000); // for uploading to device
-  Serial.begin(115200);
+  Serial.begin(9600);
   Serial.println("\nLoRa Receiver");
   //          (nss, reset, dio0); (dio0 unused)
   // LoRa.setPins(PB0, PB1); //, PA4); // only sending..
