@@ -123,54 +123,18 @@
 //   }
 // }
 
-//
-// SEND
-//
-#include <SPI.h>
-#include <LoRa.h>
-int counter = 0;
-void setup()
-{
-  delay(10000); // for uploading to device
-  Serial.begin(9600);
-  Serial.println("\nLoRa Sender");
-  //          (nss, reset, dio0); (dio0 unused)
-  LoRa.setPins(PB6, PB5); //, PA4);  // only sending..
-  if (!LoRa.begin(433E6)) // 433 is legal in the UK and capable by device. 863-870 otherwise. worried it'll clash though
-  {
-    Serial.println("Starting LoRa failed!");
-    while (1)
-      ;
-  }
-}
-void loop()
-{
-  Serial.print("Sending packet: ");
-  Serial.println(counter);
-  // send packet
-  LoRa.beginPacket();
-  LoRa.print("hey from chokia ");
-  LoRa.print(counter);
-  LoRa.endPacket();
-  counter++;
-  delay(1000);
-}
-
 // //
-// // SENDY RECEIVY
+// // SEND
 // //
 // #include <SPI.h>
 // #include <LoRa.h>
-// long counter = 0;
-// long ticker = 0;
-// long tickerSnapshot = 0;
+// int counter = 0;
 // void setup()
 // {
-//   delay(15000); // for uploading to device
+//   delay(10000); // for uploading to device
 //   Serial.begin(9600);
-//   Serial.println("\nLoRa Receiver");
+//   Serial.println("\nLoRa Sender");
 //   //          (nss, reset, dio0); (dio0 unused)
-//   // LoRa.setPins(PB0, PB1); //, PA4); // only sending..
 //   LoRa.setPins(PB6, PB5); //, PA4);  // only sending..
 //   if (!LoRa.begin(433E6)) // 433 is legal in the UK and capable by device. 863-870 otherwise. worried it'll clash though
 //   {
@@ -181,35 +145,71 @@ void loop()
 // }
 // void loop()
 // {
-//   // try to parse packet
-//   int packetSize = LoRa.parsePacket();
-//   if (packetSize)
-//   {
-//     // received a packet
-//     Serial.print("Received: '");
-//     // read packet
-//     while (LoRa.available())
-//     {
-//       Serial.print((char)LoRa.read());
-//     }
-//     // print RSSI of packet
-//     Serial.print("' with RSSI "); // Received Signal Strength Indicator (0 is theoretical full strength)
-//     Serial.println(LoRa.packetRssi());
-//     delay(10);
-//   }
-
-//   if (ticker > 5000)
-//   {
-//     tickerSnapshot = millis();
-//     Serial.print("Sending: ");
-//     Serial.println(counter);
-//     // send packet
-//     LoRa.beginPacket();
-//     LoRa.print("Hey from chokia ");
-//     LoRa.print(counter);
-//     LoRa.endPacket();
-//     counter++;
-//     delay(10);
-//   }
-//   ticker = millis() - tickerSnapshot;
+//   Serial.print("Sending packet: ");
+//   Serial.println(counter);
+//   // send packet
+//   LoRa.beginPacket();
+//   LoRa.print("hey from chokia ");
+//   LoRa.print(counter);
+//   LoRa.endPacket();
+//   counter++;
+//   delay(1000);
 // }
+
+//
+// SENDY RECEIVY
+//
+#include <SPI.h>
+#include <LoRa.h>
+long counter = 0;
+long ticker = 0;
+long tickerSnapshot = 0;
+void setup()
+{
+  delay(15000); // for uploading to device
+  Serial.begin(9600);
+  Serial.println("\nLoRa Receiver");
+  //          (nss, reset, dio0); (dio0 unused)
+  // LoRa.setPins(PB0, PB1); //, PA4); // only sending..
+  LoRa.setPins(PB6, PB5); //, PA4);  // only sending..
+  if (!LoRa.begin(433E6)) // 433 is legal in the UK and capable by device. 863-870 otherwise. worried it'll clash though
+  {
+    Serial.println("Starting LoRa failed!");
+    while (1)
+      ;
+  }
+}
+void loop()
+{
+  // try to parse packet
+  int packetSize = LoRa.parsePacket();
+  if (packetSize)
+  {
+    // received a packet
+    Serial.print("Received: '");
+    // read packet
+    while (LoRa.available())
+    {
+      Serial.print((char)LoRa.read());
+    }
+    // print RSSI of packet
+    Serial.print("' with RSSI "); // Received Signal Strength Indicator (0 is theoretical full strength)
+    Serial.println(LoRa.packetRssi());
+    // delay(10);
+  }
+
+  if (ticker > 5000)
+  {
+    tickerSnapshot = millis();
+    Serial.print("Sending: ");
+    Serial.println(counter);
+    // send packet
+    LoRa.beginPacket();
+    LoRa.print("Hey from chokia ");
+    LoRa.print(counter);
+    LoRa.endPacket();
+    counter++;
+    // delay(10);
+  }
+  ticker = millis() - tickerSnapshot;
+}

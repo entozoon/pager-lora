@@ -166,7 +166,7 @@ void loop()
     // dies here! *****
     LoRa.endPacket();
     counter++;
-    delay(1000);
+    // delay(1000);
   }
   ticker = millis() - tickerSnapshot;
 }
