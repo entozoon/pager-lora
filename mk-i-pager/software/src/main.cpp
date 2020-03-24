@@ -153,21 +153,17 @@ void loop()
     delay(10);
   }
 
-  if (ticker > 5000)
+  if (ticker > 10000)
   {
     tickerSnapshot = millis();
     Serial.print("Sending: ");
     Serial.println(counter);
     // send packet
-    Serial.println(1);
     LoRa.beginPacket();
-    Serial.println(2);
     LoRa.print("Hey from pager ");
-    Serial.println(3);
     LoRa.print(counter);
-    Serial.println(4);
+    // dies here! *****
     LoRa.endPacket();
-    Serial.println(5);
     counter++;
     delay(10);
   }
