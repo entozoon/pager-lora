@@ -52,7 +52,7 @@
 //   Serial.println(counter);
 //   // send packet
 //   LoRa.beginPacket();
-//   LoRa.print("hello ");
+//   LoRa.print("hey from pager ");
 //   LoRa.print(counter);
 //   LoRa.endPacket();
 //   counter++;
@@ -159,10 +159,15 @@ void loop()
     Serial.print("Sending: ");
     Serial.println(counter);
     // send packet
+    Serial.println(1);
     LoRa.beginPacket();
+    Serial.println(2);
     LoRa.print("Hey from pager ");
+    Serial.println(3);
     LoRa.print(counter);
+    Serial.println(4);
     LoRa.endPacket();
+    Serial.println(5);
     counter++;
     delay(10);
   }
