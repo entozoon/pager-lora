@@ -2,3 +2,5 @@
 **/*.b#*
 **/*.s#*
 **/*.job
+# hope these aren't important.. lets eagle know it's a project, but meh
+**/*.pro
