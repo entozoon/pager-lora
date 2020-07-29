@@ -22,7 +22,7 @@ $stem_inset = 2;
 
 $key_shape_type = "rounded_square"; // iso_enter sculpted_square rounded_square square oblong
 
-//$stabilizer_type = "cherry_stabilizer"; // [costar_stabilizer, cherry_stabilizer, disable]
+$stabilizer_type = "cherry_stabilizer"; // [costar_stabilizer, cherry_stabilizer, disable]
 
 // be reet, use the outside two?
 // $stabilizers = $key_length >= 6 ? [[-50, 0], [50, 0]] : $key_length >= 2 ? [[-12,0],[12,0]] : [];
